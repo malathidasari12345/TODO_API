@@ -71,7 +71,10 @@ const getUser = (req, res) => {
 // logout
 const logout = (req,res)=>{
     res.status(200)
-    .cookie("token","",{expires: new Date(Date.now()),
+    .cookie("token","",{
+        expires: new Date(Date.now()),
+        samesite:process.env.Node_ENV ==="Development" ? "lax" : "none",
+        secure:process.env.Node_ENV ==="Development" ? false : true
     })
     .json({
         success : true,

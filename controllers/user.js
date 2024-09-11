@@ -72,9 +72,10 @@ const getUser = (req, res) => {
 const logout = (req,res)=>{
     res.status(200)
     .cookie("token","",{
-        expires: new Date(Date.now()),
+        httpOnly: true,
         samesite:process.env.Node_ENV ==="Development" ? "lax" : "none",
-        secure:process.env.Node_ENV ==="Development" ? false : true
+        secure:process.env.Node_ENV ==="Development" ? false : true,
+         expires: new Date(0),
     })
     .json({
         success : true,

@@ -8,7 +8,6 @@ const sendcookie = (user,res,message,statuscode = 200)=>{
   
  res.status(statuscode).cookie("token", token, {
       httpOnly: true,
-      maxAge: 15 * 60 * 1000,
       samesite:process.env.Node_ENV ==="Development" ? "lax" : "none",
       secure:process.env.Node_ENV ==="Development" ? false : true
   }).json({
